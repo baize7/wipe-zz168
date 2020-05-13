@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>canvas擦除特效</title>
+	<style>
+		html,body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
+		#cas {
+			border: 1px solid #000;
+			background: url(images/wipe1.jpg) center center;
+		}
+	</style>
+</head>
+<body>
+	<canvas id="cas" width="375" height="667"></canvas>
+</body>
+</html>
+<script src="js/swipe-zz168-1.1.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	var obj ={
+		id:"cas", //canvas的id
+		_w:"375", //canvas的宽
+		_h:"667", //canvas的高度
+		radius:"20", //檫除原点的半径
+		covoerType:"img",  //canvas的覆盖类型，可以有两种取值img或color，img则需要指定图片路径;
+		//如果是color则需在mask中给出颜色值，可以是字符串或十六进制或rgb();
+		mask:"images/785731a4gy1g4lr605y3jj20m211jk1d.jpg",
+		percent:50  ,//当透明面积超过此处指定的数字，则提示檫除完成
+		callback:wancheng //用户自定义回调函数名称
+	}
+	var swipe01 = new Swipe(obj);
+	console.log(swipe01);
+	function wancheng(transPercent){
+		//transPercent 为透明面积占总面积的百分比
+		//檫除完成后，用户自己的逻辑
+		console.log(transPercent);
+		if(transPercent>50){
+			alert("檫除完成 查看抽奖结果")
+		}
+	}
+</script>
